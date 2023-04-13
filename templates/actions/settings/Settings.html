@@ -1,0 +1,53 @@
+<h1>Сохранение и восстановление локалей</h1>
+
+<div class="fields form">
+
+  <div>
+    <input type="button" class="button green" value="Сохранить локали" id="save_locales" style="width:250px;">
+    <span id="save_locales_start" style="display:none;">
+      <i style="vertical-align:middle" class="icon16 loading"></i> Сохранение...
+    </span>
+    <span id="save_locales_end" style="display:none;">
+      <i style="vertical-align:middle" class="icon16 yes"></i> [`Saved`]
+    </span>
+  </div>
+
+  <div style="margin-top:10px;">
+    <input type="button" class="button blue" value="Восстановить локали" id="restore_locales" style="width:250px;">
+    <span id="restore_locales_start" style="display:none;">
+      <i style="vertical-align:middle" class="icon16 loading"></i> Восстановление...
+    </span>
+    <span id="restore_locales_end" style="display:none;">
+      <i style="vertical-align:middle" class="icon16 yes"></i> Локали восстановлены
+    </span>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+  $('#save_locales').on('click', function(){
+    $('#save_locales_start').show();
+    $.post('?plugin=localebackup&action=save', function(html){
+      $('#save_locales_start').fadeOut(function(){
+        $('#save_locales_end').fadeIn();
+      });
+      setTimeout(function(){
+        $('#save_locales_end').fadeOut();
+      }, 3000);
+    });
+  });
+
+  $('#restore_locales').on('click', function(){
+    $('#restore_locales_start').show();
+    $.post('?plugin=localebackup&action=restore', function(html){
+      $('#restore_locales_start').fadeOut(function(){
+        $('#restore_locales_end').fadeIn();
+      });
+      setTimeout(function(){
+        $('#restore_locales_end').fadeOut();
+      }, 3000);
+    });
+  });
+
+</script>
