@@ -6,7 +6,6 @@ return [
     'vendor'        => '0',
     'version'       => '1.0.0',
     'shop_settings' => true,
-    'handlers'      => [
-    ],
+    'handlers'      => [],
 ];
 //EOF
